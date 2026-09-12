@@ -158,5 +158,5 @@ dashboard/Supplier_Risk_Dashboard.pbix
 
 如果你对本项目有任何问题、建议或合作想法，欢迎与我联系。
 
-- 邮箱：**your-email@example.com**
+- 邮箱：**peiyuan856@gmail.com**
 - GitHub：**@peiyuan856-hue**
