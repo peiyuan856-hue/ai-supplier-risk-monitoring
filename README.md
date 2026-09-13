@@ -21,7 +21,7 @@ This project brings those signals together into one supplier risk-monitoring fra
 
 ## Project Workflow
 
-1. Read and validate historical purchase-order data.
+1. Read and validate the synthetic purchase-order dataset.
 2. Aggregate order-level records into a supplier scorecard.
 3. Calculate delivery, quality, price, and contract-compliance KPIs.
 4. Produce a transparent and explainable business risk score.
@@ -134,6 +134,34 @@ dashboard/Supplier_Risk_Dashboard.pbix
 ```
 
 in Power BI Desktop to explore the interactive dashboard.
+
+## Data Source, Attribution, and Method Adaptation
+
+The raw order-level dataset, `data/supplier_orders.csv`, is a renamed,
+unmodified copy of `data/purchase_orders.csv` from
+[Procurement Spend Analysis Dashboard](https://github.com/dytcoke23/procurement-spend-analysis-dashboard),
+created by Harsh (`dytcoke23`) and distributed under the MIT License.
+
+The source dataset is seeded synthetic data and does not contain real company,
+supplier, or confidential procurement information.
+
+This project uses the source dataset as its analytical input and generates two
+derived datasets:
+
+- `data/supplier_scorecard.csv`: supplier-level KPI aggregation and business
+  risk scores
+- `data/supplier_risk_final.csv`: final results combining business risk scores
+  with Isolation Forest anomaly signals
+
+The supplier KPI framework, risk caps and weights, and the
+`StandardScaler + IsolationForest` approach were adapted from the same
+open-source project. This implementation modifies the analytical workflow,
+uses a 70% business-score and 30% anomaly-score blend, applies a 6% anomaly
+contamination setting, and presents the results in a newly built Power BI
+dashboard.
+
+The original copyright and MIT permission notice are preserved in
+[THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md).
 
 ## Risk Governance and Limitations
 
