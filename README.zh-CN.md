@@ -19,7 +19,7 @@
 
 ## 项目流程
 
-1. 读取并验证历史采购订单数据。
+1. 读取并验证合成采购订单数据
 2. 将订单层级数据汇总形成供应商绩效评分卡。
 3. 计算交付、质量、价格以及合同合规相关 KPI。
 4. 构建透明、可解释的业务风险评分。
@@ -135,6 +135,31 @@ dashboard/Supplier_Risk_Dashboard.pbix
 ```
 
 即可查看交互式供应商风险分析仪表盘。
+
+## 数据来源、署名与方法改编
+
+本项目使用的订单级原始数据 `data/supplier_orders.csv`，是
+[Procurement Spend Analysis Dashboard](https://github.com/dytcoke23/procurement-spend-analysis-dashboard)
+项目中 `data/purchase_orders.csv` 的重命名、未修改副本。
+
+原项目由 Harsh（GitHub 用户名 `dytcoke23`）创建，并根据 MIT
+开源许可证发布。该数据为使用固定随机种子生成的合成采购数据，
+不包含任何真实企业、供应商或机密采购信息。
+
+本项目以该订单数据为分析输入，并进一步生成：
+
+- `data/supplier_scorecard.csv`：供应商 KPI 汇总及业务风险评分
+- `data/supplier_risk_final.csv`：结合业务风险评分和 Isolation Forest
+  异常信号生成的最终结果
+
+供应商 KPI 框架、风险权重与上限，以及
+`StandardScaler + IsolationForest` 方法参考并改编自上述开源项目。
+本项目进一步调整了分析流程，采用 70% 业务评分与 30% 异常评分的
+组合方式，将异常比例设置为 6%，并重新制作了 Power BI 可视化及
+项目报告。
+
+原项目的版权与 MIT 许可证全文保留在
+[THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md)。
 
 ## 风险治理与项目局限
 
