@@ -1,3 +1,10 @@
+# Methodology adapted from:
+# https://github.com/dytcoke23/procurement-spend-analysis-dashboard
+#
+# Original project copyright (c) 2026 Harsh.
+# Distributed under the MIT License.
+# See ../THIRD_PARTY_NOTICES.md for attribution and the complete license notice.
+
 from pathlib import Path
 
 import pandas as pd
